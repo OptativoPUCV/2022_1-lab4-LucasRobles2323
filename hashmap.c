@@ -109,7 +109,7 @@ Pair * searchMap(HashMap * map,  char * key) {
         if(indice < map->capacity){indice++;}
         else{indice = 0;}
     }
-
+    
     return NULL;
 }
 
