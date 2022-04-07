@@ -44,34 +44,24 @@ void insertMap(HashMap * map, char * key, void * value) {
     if(key==NULL) return;
     long index = hash(key, map->capacity);
 
-    while ((map->buckets[index]->key != NULL) && (map->buckets[index] != NULL))
+    while ((map->buckets[index] != NULL) && (map->buckets[index]->key != NULL))
     {
        if(is_equal(key, map->buckets[index]->key))
        {
            return;
        }
-
-       if(index < map->capacity){
-           index++;
-       }
-       else{
-           index = 0;
-       }
-    }
+       index = (index + 1) % map->capacity;
     
+    }
     if(map->buckets[index] != NULL){
-        strcpy( (char*) map->buckets[index]->key, (char*) key);
+        map->buckets[index]->key =key;
         map->buckets[index]->value = value;
-        map->size++;
-        map->current = index;
     }
     else{
         map->buckets[index] = createPair(key, value);
+        map->size++;
     }
-    
-    if(map->size / map->capacity >= 0.70){
-        enlarge(map);
-    }
+    if((double) map->size/(double) map->capacity > 0.75){enlarge(map);}
 
 }
 
