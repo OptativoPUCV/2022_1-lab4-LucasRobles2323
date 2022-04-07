@@ -87,9 +87,13 @@ HashMap * createMap(long capacity) {
     Map->capacity = capacity;
     Map->current = -1;
     Map->size = 0;
-    Map->buckets = NULL;
-
-    return Map;
+    Map->buckets = (Pair**) malloc (sizeof(Pair*) * 10);
+    for (size_t i = 0; i < 10; i++)
+    {
+        Map->buckets[i] = NULL;
+    }
+    
+    return &Map;
 }
 
 void eraseMap(HashMap * map,  char * key) {    
@@ -109,7 +113,7 @@ Pair * searchMap(HashMap * map,  char * key) {
         if(indice < map->capacity){indice++;}
         else{indice = 0;}
     }
-    
+
     return NULL;
 }
 
