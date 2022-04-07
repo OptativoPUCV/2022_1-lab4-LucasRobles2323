@@ -25,7 +25,8 @@ Pair * createPair( char * key,  void * value) {
 
 long hash( char * key, long capacity) {
     unsigned long hash = 0;
-     char * ptr;
+    char * ptr;
+
     for (ptr = key; *ptr != '\0'; ptr++) {
         hash += hash*32 + tolower(*ptr);
     }
@@ -40,7 +41,37 @@ int is_equal(void* key1, void* key2){
 
 
 void insertMap(HashMap * map, char * key, void * value) {
+    if(key==NULL) return;
+    long index = hash(key, map->capacity);
 
+    while ((map->buckets[index]->key != NULL) || (map->buckets[index] != NULL))
+    {
+       if(is_equal(key, map->buckets[index]->key))
+       {
+           return;
+       }
+
+       if(index < map->capacity){
+           index++;
+       }
+       else{
+           index = 0;
+       }
+    }
+    
+    if(map->buckets[index] != NULL){
+        strcpy( (char*) map->buckets[index]->key, (char*) key);
+        map->buckets[index]->value = value;
+        map->size++;
+        map->current = index;
+    }
+    else{
+        map->buckets[index] = createPair(key, value);
+    }
+    
+    if(map->size / map->capacity >= 0.70){
+        enlarge(map);
+    }
 
 }
 
@@ -52,8 +83,13 @@ void enlarge(HashMap * map) {
 
 
 HashMap * createMap(long capacity) {
+    HashMap *Map = (HashMap*) malloc (sizeof(HashMap));
+    Map->capacity = capacity;
+    Map->current = -1;
+    Map->size = 0;
+    Map->buckets = NULL;
 
-    return NULL;
+    return Map;
 }
 
 void eraseMap(HashMap * map,  char * key) {    
@@ -62,7 +98,17 @@ void eraseMap(HashMap * map,  char * key) {
 }
 
 Pair * searchMap(HashMap * map,  char * key) {   
+    long indice = hash(key, map->capacity);
 
+    while (map->buckets[indice] != NULL)
+    {
+        if (strcmp( (char*)map->buckets[indice]->key, (char*)key) == 0)
+        {
+            return map->buckets[indice];
+        }
+        if(indice < map->capacity){indice++;}
+        else{indice = 0;}
+    }
 
     return NULL;
 }
