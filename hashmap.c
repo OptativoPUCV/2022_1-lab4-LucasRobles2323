@@ -110,7 +110,7 @@ Pair * searchMap(HashMap * map,  char * key) {
 
     while (map->buckets[indice] != NULL)
     {
-        if (strcmp( (char*)map->buckets[indice]->key, (char*)key) == 0)
+        if (is_equal(key, map->buckets[indice]->key))
         {
             return map->buckets[indice];
         }
@@ -122,7 +122,16 @@ Pair * searchMap(HashMap * map,  char * key) {
 }
 
 Pair * firstMap(HashMap * map) {
+    map->current = 0;
 
+    while (map->current < map->capacity)
+    {
+        if( (map->buckets[map->current] != NULL) && (map->buckets[map->current]->key != NULL) ) {
+            return map->buckets[map->current];
+        }
+        map->current++;
+    }
+    
     return NULL;
 }
 
