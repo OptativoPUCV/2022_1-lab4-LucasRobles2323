@@ -96,13 +96,13 @@ void eraseMap(HashMap * map,  char * key) {
        if(is_equal(key, map->buckets[index]->key))
        {
            map->buckets[index]->key = NULL;
-           map->size;
+           map->size--;
            return;
        }
        index = (index + 1) % map->capacity;
     
     }
-    
+
 }
 
 Pair * searchMap(HashMap * map,  char * key) {   
