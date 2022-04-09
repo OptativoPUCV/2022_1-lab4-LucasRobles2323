@@ -127,12 +127,12 @@ Pair * searchMap(HashMap * map,  char * key) {
     {
         if (is_equal(key, map->buckets[indice]->key))
         {
+            map->current = indice;
             return map->buckets[indice];
         }
         if(indice < map->capacity){indice++;}
         else{indice = 0;}
     }
-
     return NULL;
 }
 
