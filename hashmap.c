@@ -173,4 +173,6 @@ Pair * nextMap(HashMap * map) {
             return map->buckets[map->current];
         }
     }
+
+    return NULL;
 }
