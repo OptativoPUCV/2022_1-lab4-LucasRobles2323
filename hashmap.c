@@ -68,6 +68,10 @@ void insertMap(HashMap * map, char * key, void * value) {
 
 void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)
+    Pair ***aux = (Pair***) malloc(sizeof(Pair**));
+    aux = map->buckets;
+    map->capacity *= 2;
+    map->buckets = (Pair**) realloc (map->buckets, sizeof(Pair*) * map->capacity);
     
 }
 

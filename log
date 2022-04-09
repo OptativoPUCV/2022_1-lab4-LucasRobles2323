@@ -95,3 +95,17 @@ Fri Apr  8 20:42:06 HSP 2022:
  tests:  11|3
 total_score: 40/70
 c1e14aa
+Fri Apr  8 20:42:42 HSP 2022: 
+ hashmap.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+In file included from test.c:4:0:
+hashmap.c: In function 'enlarge':
+hashmap.c:72:9: error: assignment from incompatible pointer type [-Werror=incompatible-pointer-types]
+     aux = map->buckets;
+         ^
+hashmap.c:71:13: error: variable 'aux' set but not used [-Werror=unused-but-set-variable]
+     Pair ***aux = (Pair***) malloc(sizeof(Pair**));
+             ^~~
+cc1.exe: all warnings being treated as errors
+Compilation failed
+a35b3a0
