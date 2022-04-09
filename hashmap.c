@@ -77,12 +77,14 @@ void enlarge(HashMap * map) {
 
     map->capacity *= 2;
     map->buckets = (Pair**) calloc (map->capacity, sizeof(Pair*));
+    map->size = 0;
 
     for (size_t i = 0; i < (map->capacity/2); i++)
     {
         if(aux[i] != NULL && aux[i]->key != NULL){
             long index = hash(aux[i]->key, map->capacity);
             map->buckets[index] = aux[i];
+            map->size++;
         }
     }
 }
@@ -150,7 +152,7 @@ Pair * firstMap(HashMap * map) {
     return NULL;
 }
 
-/*Pair * nextMap(HashMap * map) {
+Pair * nextMap(HashMap * map) {
     map->current++;
     while (map->current < map->capacity)
     {
@@ -160,19 +162,5 @@ Pair * firstMap(HashMap * map) {
         map->current++;
     }
     
-    return NULL;
-}*/
-
-Pair * nextMap(HashMap * map) {
-    map->current++;
-    for(long i = map->current; i < map->capacity; i++)
-    {
-        if(map->buckets[i] != NULL && map->buckets[i]->key != NULL)
-        {
-            map->current = i;
-            return map->buckets[map->current];
-        }
-    }
-
     return NULL;
 }
