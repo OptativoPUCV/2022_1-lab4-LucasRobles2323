@@ -80,7 +80,10 @@ void enlarge(HashMap * map) {
 
     for (size_t i = 0; i < (map->capacity/2); i++)
     {
-        map->buckets[hash(aux[i]->key, map->capacity)] = aux[i];
+        if(aux[i] != NULL && aux[i]->key != NULL){
+            long index = hash(aux[i]->key, map->capacity);
+            map->buckets[index] = aux[i];
+        }
     }
 }
 
