@@ -94,11 +94,11 @@ HashMap * createMap(long capacity) {
     Map->capacity = capacity;
     Map->current = -1;
     Map->size = 0;
-    Map->buckets = (Pair**) malloc (sizeof(Pair*) * 10);
-    for (size_t i = 0; i < 10; i++)
+    Map->buckets = (Pair**) calloc (Map->capacity, sizeof(Pair*));
+    /*for (size_t i = 0; i < 10; i++)
     {
         Map->buckets[i] = NULL;
-    }
+    }*/
     
     return Map;
 }
