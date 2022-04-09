@@ -78,10 +78,10 @@ void enlarge(HashMap * map) {
     map->capacity *= 2;
     map->buckets = (Pair**) realloc (map->buckets, sizeof(Pair*) * map->capacity);
 
-    for (size_t i = 0; i < (map->capacity/2); i++)
-    {
-        map->buckets[i] = aux[i];
-    }
+    //for (size_t i = 0; i < (map->capacity/2); i++)
+    //{
+    //    map->buckets[i] = aux[i];
+    //}
 }
 
 
