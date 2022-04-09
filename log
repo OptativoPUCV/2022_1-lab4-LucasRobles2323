@@ -198,3 +198,14 @@ Fri Apr  8 21:02:05 HSP 2022:
  tests:  11|3
 total_score: 40/70
 795d98c
+Fri Apr  8 21:04:07 HSP 2022: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:0:
+hashmap.c: In function 'enlarge':
+hashmap.c:83:40: error: '*aux' is a pointer; did you mean to use '->'?
+         insertMap(map, aux[i]->key, aux->value);
+                                        ^~
+                                        ->
+Compilation failed
+e0b6dfa
