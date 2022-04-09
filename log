@@ -209,3 +209,8 @@ hashmap.c:83:40: error: '*aux' is a pointer; did you mean to use '->'?
                                         ->
 Compilation failed
 e0b6dfa
+Fri Apr  8 21:04:28 HSP 2022: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  0|0
+1bd88e6
