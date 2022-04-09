@@ -224,3 +224,8 @@ hashmap.c:83:47: error: incompatible types when assigning to type 'HashMap {aka 
                                                ^
 Compilation failed
 6176168
+Fri Apr  8 21:07:26 HSP 2022: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  0|0
+d4e2345
