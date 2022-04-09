@@ -214,3 +214,13 @@ Fri Apr  8 21:04:28 HSP 2022:
  1 file changed, 1 insertion(+), 1 deletion(-)
  tests:  0|0
 1bd88e6
+Fri Apr  8 21:07:08 HSP 2022: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:0:
+hashmap.c: In function 'enlarge':
+hashmap.c:83:47: error: incompatible types when assigning to type 'HashMap {aka struct HashMap}' from type 'Pair * {aka struct Pair *}'
+         map[hash(aux[i]->key, map->capacity)] = aux[i];
+                                               ^
+Compilation failed
+6176168
