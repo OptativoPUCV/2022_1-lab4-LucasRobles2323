@@ -86,6 +86,8 @@ void enlarge(HashMap * map) {
             insertMap(map, aux[i]->key, aux[i]->value);
         }
     }
+    
+    free(aux);
 }
 
 
